@@ -1,0 +1,25 @@
+data_cfg: # 数据相关配置文件
+  type: CigDatasetAll # 数据类型, 二分类或多分类
+  data_dir: ./scan_data_256/1916/images
+
+model_cfg:
+  type: DFFD
+  model_name: resnet50
+  pretrained: True
+  feat_dim: 2048
+  num_classes: 4
+  norm_linear: False # 是否对全连接层进行归一化
+
+loss_cfg: # 定义一个分类损失+一个特征损失
+  - type: CELoss
+    loss_term_weight: 1.0
+
+trainer_cfg:
+  type: BaseTrainer
+  save_dir: ./outputs/
+  best_test_metric: 0.8
+  epochs: 50
+  early_stop: 5
+  restore_hint: 0 # 0表示加载最佳模型
+  inference_type: logits # logits or metric
+  metric_threshold: -1.0

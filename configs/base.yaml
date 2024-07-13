@@ -1,0 +1,93 @@
+
+data_cfg: # 数据相关配置文件
+  type: CigDatasetAll # 数据类型, 二分类或多分类
+  data_dir: ./scan_data_256/1916/images
+  transform_cfg:
+    train:
+      ColorJitter:
+        brightness: 0.1
+        contrast: 0.1
+        saturation: 0.1
+        hue: 0.1
+      RandomRotation:
+        degrees: 10
+      ToTensor: {}
+      Normalize:
+        mean: [0.485, 0.456, 0.406]
+        std: [0.229, 0.224, 0.225]
+    test:
+      ToTensor: {}
+      Normalize:
+        mean: [0.485, 0.456, 0.406]
+        std: [0.229, 0.224, 0.225]
+  img_sizes: [256, 256] # 图片尺寸
+  return_edge: False # 是否返回边缘信息, 如果是FaceEdge模型, 则设置为True
+
+dataloader_cfg:
+  batch_size: 128
+  num_workers: 4 # 一般设置为cpu核数
+  pin_memory: True
+
+model_cfg:
+  type: BaseModel # DFFD, FaceEdge, BaseModel
+  model_name: resnet50
+  pretrained: True
+  feat_dim: 2048
+  num_classes: 4
+  norm_linear: False # 是否对全连接层进行归一化
+
+loss_cfg: # 定义一个分类损失+一个特征损失
+  # - type: BCELoss
+  #   loss_term_weight: 1.0
+  - type: CELoss
+    label_smooth: False
+    eps: 0.1
+    loss_term_weight: 1.0
+  # - type: TripletLoss
+  #   loss_term_weight: 1.0
+  #   margin: 0.5
+  #   hard_mining: True
+  # - type: CenterLoss
+  #   loss_term_weight: 0.1
+  #   num_classes: 2
+  #   feat_dim: 2048
+  - type: AllContrastiveLoss
+    loss_term_weight: 0.1
+    margin: 0.5
+  # - type: SCLLoss
+  #   temperature: 0.7
+  #   loss_term_weight: 0.1
+
+optimizer_cfg:
+  type: SGD
+  lr: 0.01
+  momentum: 0.9
+  weight_decay: 1.0e-4
+  # type: Adam
+  # lr: 0.001
+  # weight_decay: 0.0005
+  # betas: [0.9, 0.999]
+
+scheduler_cfg: # 学习率衰减策略
+  type: MultiStepLR
+  gamma: 0.9
+  milestones: # Learning Rate Reduction at each milestones
+    - 50
+    - 70
+    - 90
+
+warmup_cfg: # warmup策略
+  type: linear
+  warmup_epochs: 5
+
+
+trainer_cfg:
+  type: BaseTrainer
+  save_dir: ./outputs/
+  best_test_metric: 0.8
+  epochs: 50
+  early_stop: 5
+  restore_hint: 0 # 0表示加载最佳模型
+  inference_type: metric # logits or metric
+  metric_threshold: -1.0
+  alpha: 1.5
