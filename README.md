@@ -64,7 +64,11 @@ For the model weights,  they are available at:
 
 To safeguard against counterfeiters using our dataset to improve their forgery methods, we will not disclose the collected cigarette data or the anti-counterfeiting regions linked to each cigarette specification. For legitimate inquiries, please contact [zhouqian@whu.edu.cn](mailto:zhouqian@whu.edu.cn) and enter into a confidentiality agreement.
 
-#### 6. Cite
+#### 6. Context-aware saliency detection
+
+Please refer to https://github.com/MCG-NKU/SalBenchmark/tree/master/Code/matlab/CA
+
+#### 7. Cite
 
 If you find the repo useful to your work, please cite our paper.
 
