@@ -10,7 +10,7 @@ model_cfg:
   pretrained: True
   feat_dim: 2048
   num_classes: 4
-  norm_linear: True # 是否对全连接层进行归一化
+  norm_linear: False # 是否对全连接层进行归一化
 
 loss_cfg: # 定义一个分类损失+一个特征损失
   - type: CELoss
