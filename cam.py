@@ -143,7 +143,7 @@ if __name__ == "__main__":
                 model = Model(**valid_args)
                 model = model.to(device)
                 
-                ckpt_path = f"./outputs/{img_type}_data_256/yingh_0/{cig_brand}/{data_type}/CE/{model_name}/macro/logits/best_test_model.pt"
+                ckpt_path = f"./outputs/{img_type}_data_256/{cig_brand}/{data_type}/CE/{model_name}/macro/logits/best_test_model.pt"
                 model.load_state_dict(torch.load(ckpt_path)['model'])
                 image_dir = f"./{img_type}_data_256/{cig_brand}/{data_type}/test/{region_id}/{label}/"
                 img_list = os.listdir(image_dir)
