@@ -164,3 +164,7 @@ cython_debug/
 # VSCode
 .vscode/
 .lh/
+
+# Data
+ckpts/
+data/
