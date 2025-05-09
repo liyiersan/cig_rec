@@ -1,4 +1,4 @@
-### Official implementation of paper "Prior-Enhanced Metric Learning for Few-Shot Recognition of Counterfeit Cigarettes Using Packaging Information"
+### Official implementation of paper "Region-Aware Metric Learning for Few-Shot Recognition of Counterfeit Cigarettes from Packaging Images"
 
 #### 1. Environment 
 
