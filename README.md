@@ -52,13 +52,13 @@ For the test samples, they are available at:
 
 [Baidu Netdisk, code: feap](https://pan.baidu.com/s/1K6Tccty4TbNv99FRtIU8Hg?pwd=feap )
 
-[Google Drive](https://drive.google.com/file/d/1g5q7oTbwgJrxap3qEhU_-c24gxq9cmzV/view?usp=sharing)
+[Google Drive](https://drive.google.com/file/d/1XfWB1z7G9JQYG0fjlDoAMzC7fTzZrAPp/view?usp=drive_link)
 
 For the model weights,  they are available at:
 
 [Baidu Netdisk, code: msh5 ](https://pan.baidu.com/s/1Wxoa33WbebhoaOt7-gnk0g?pwd=msh5)
 
-[Google Drive](https://drive.google.com/file/d/1XfWB1z7G9JQYG0fjlDoAMzC7fTzZrAPp/view?usp=drive_link)
+[Google Drive](https://drive.google.com/file/d/1g5q7oTbwgJrxap3qEhU_-c24gxq9cmzV/view?usp=sharing)
 
 #### 5. Data availability
 
